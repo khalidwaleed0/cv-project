@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import PersonalSection from "./components/PersonalSection.js";
+import EducationSection from "./components/EducationSection.js";
+import ExperienceSection from "./components/ExperienceSection.js";
+import PreviewSection from "./components/PreviewSection.js";
+import "./styles/style.css";
+import profile from "./images/profile.png";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			personal: {
+				image: profile,
+				fullName: "",
+				jobTitle: "",
+				email: "",
+				phone: "",
+				address: "",
+			},
+			education: [],
+			experience: [],
+		};
+	}
+	render() {
+		return (
+			<div className="App">
+				<header>
+					<h1>Resume Builder</h1>
+				</header>
+				<main>
+					<div className="sections-container">
+						<PersonalSection data={this.state.personal} updatePersonalSection={this.updatePersonalSection} />
+						<EducationSection data={this.state.education} updateEducation={this.updateEducation} />
+						<ExperienceSection data={this.state.experience} updateExperience={this.updateExperience} />
+					</div>
+					<PreviewSection data={this.state} />
+				</main>
+			</div>
+		);
+	}
+	updatePersonalSection = (newInfo) => {
+		this.setState({
+			personal: newInfo,
+		});
+	};
+	updateEducation = (edu) => {
+		this.setState({
+			education: edu,
+		});
+	};
+	updateExperience = (exp) => {
+		this.setState({
+			experience: exp,
+		});
+	};
 }
 
 export default App;
