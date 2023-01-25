@@ -78,7 +78,7 @@ main {
 }
 
 button {
-	background-color: transparent;
+	background-color: white;
 	border: 1px solid lightgrey;
 	font-size: 20px;
 	padding: 4px 16px;
@@ -191,14 +191,16 @@ form div input:not(:placeholder-shown) ~ span {
 
 /*preview education*/
 
-.education-info, .experience-info {
+.education-info,
+.experience-info {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	gap: 4px 36px;
 	padding: 12px 2px;
 }
 
-p.education-preview-header, p.experience-preview-header {
+p.education-preview-header,
+p.experience-preview-header {
 	border-bottom: 1px solid black;
 	border-radius: 0;
 	font-weight: bold;
@@ -238,5 +240,15 @@ p.education-preview-header, p.experience-preview-header {
 		display: flex;
 		flex-direction: column;
 		padding: 5%;
+	}
+}
+
+@media print {
+	header,
+	.sections-container {
+		display: none;
+	}
+	.preview-container{
+		box-shadow: none;
 	}
 }

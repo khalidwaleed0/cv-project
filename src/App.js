@@ -17,6 +17,9 @@ function App() {
 	});
 	const [education, updateEducation] = useState([]);
 	const [experience, updateExperience] = useState([]);
+	function downloadPDF(e) {
+		window.print();
+	}
 	return (
 		<div className="App">
 			<header>
@@ -27,8 +30,8 @@ function App() {
 					<PersonalSection data={personal} updatePersonalSection={updatePersonalSection} />
 					<EducationSection data={education} updateEducation={updateEducation} />
 					<ExperienceSection data={experience} updateExperience={updateExperience} />
+					<button id="btn-download" onClick={downloadPDF}>Download PDF</button>
 				</div>
-
 				<PreviewSection personal={personal} education={education} experience={experience} />
 			</main>
 		</div>
